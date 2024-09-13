@@ -1,0 +1,56 @@
+Custom MapReduce Framework in C
+
+## Description
+This project implements a lightweight MapReduce framework in C, enabling distributed processing of large datasets through a series of map and reduce operations. 
+The system is designed to be flexible, allowing users to define custom map and reduce functions to suit their specific use cases.
+The components of this project include:
+MapReduce framework: Manages task scheduling, distribution, and coordination between the mappers and reducers.
+User-defined functions: Custom mapping and reducing logic provided by the user.
+Main program: Orchestrates the initialization and execution of the MapReduce tasks.
+
+## Project Structure
+mapreduce.c: Implements the core MapReduce logic, including the execution of map and reduce tasks, data partitioning, and managing intermediate key-value pairs.
+mapreduce.h: Declares the structures and function prototypes used in the MapReduce system.
+usr_functions.c: Contains user-defined map and reduce functions that process input data according to user-defined logic.
+usr_functions.h: Declares the function prototypes for the user-defined map and reduce functions.
+main.c: Serves as the entry point for the program. It initializes the MapReduce framework and triggers the map and reduce operations.
+common.h: Contains shared macros, constants, and utility functions used across different modules.
+Makefile: Automates the build process, allowing you to easily compile the project and generate executables.
+
+## Compilation Instructions
+To compile the entire project, run the following command in the terminal:
+make
+This will produce an executable that you can use to run the MapReduce tasks.
+
+## Running the MapReduce Framework
+After compiling, run the executable to start the MapReduce job:
+./mapreduce
+The behavior of the MapReduce system, including how input data is processed and reduced, will depend on the logic in the usr_functions.c file.
+
+## Custom Map and Reduce Functions
+In the usr_functions.c file, you can define your own logic for the map and reduce functions:
+Map Function: Processes chunks of input data and emits intermediate key-value pairs.
+Reduce Function: Aggregates the key-value pairs emitted by the map function to produce the final result.
+You can customize these functions to implement various algorithms, such as counting word occurrences, summing values, or other operations depending on your input data.
+
+## Example
+Here is an example flow of how the MapReduce system works:
+Input: Data is split into partitions and passed to the map function.
+Map Phase: Each map function processes its assigned input and produces intermediate key-value pairs.
+Shuffle & Sort: The intermediate results are shuffled and sorted by key.
+Reduce Phase: The reduce function aggregates the results for each key to produce the final output.
+
+## Makefile Targets
+make: Compiles the project and generates the mapreduce executable.
+make clean: Cleans up the object files and executables.
+
+## To remove the compiled executables and object files, run:
+make clean
+
+## Future Improvements
+Extend support for multi-node distributed MapReduce processing.
+Add error handling and fault tolerance for mapper/reducer failures.
+Optimize the framework for handling larger datasets more efficiently.
+
+Author
+Rallapalli Shanmukha Subrahmanyam
